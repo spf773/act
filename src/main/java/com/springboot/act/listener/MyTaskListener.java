@@ -15,6 +15,7 @@ public class MyTaskListener implements TaskListener, ExecutionListener {
     public void notify(DelegateTask delegateTask) {
         String eventName = delegateTask.getEventName();
         log.info("{} TaskListener 进入监听：{}", eventName, delegateTask.toString());
+
     }
 
     @Override
