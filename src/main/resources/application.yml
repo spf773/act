@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    default-auto-commit: true
+    filter:
+      stat:
+        db-type: postgresql
+        enabled: true
+        log-slow-sql: true
+      wall:
+        db-type: postgresql
+        enabled: true
+    max-active: 20
+    max-open-prepared-statements: 20
+    max-wait: 60000
+    min-evictable-idle-time-millis: 300000
+    min-idle: 2
+    pool-prepared-statements: true
+    test-on-borrow: false
+    test-on-return: false
+    test-while-idle: false
+    time-between-eviction-runs-millis: 60000
+    validation-query: select 1
+    url: jdbc:postgresql://121.5.154.85:5432/act
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+  #thymeleaf 用不到删除即可
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
+    application:
+      # 注册应用名
+      name: actdemo
+    mvc:
+      # 静态资源路径
+      static-path-pattern: /static/**
+  activiti:
+    deployment-mode:  never-fail # 关闭 SpringAutoDeployment
+    # 开启历史库
+    db-history-used: true
+      #自动检查、部署流程定义文件
+    check-process-definitions: false
+    history-level: audit
+    process-definition-location-prefix: classpath:/process/
+
+#打印activiti的执行sql
+logging.level.org.activiti.engine.impl.persistence.entity: debug
+
+server:
+  port: 8089
